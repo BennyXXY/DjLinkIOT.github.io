@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: MasterBlog
-subtitle: Master the Coding World
-description: Talk is cheap. Show me the code
-author: MasterStudio
+title: DjLink技术博客
+subtitle: 打造精英团队
+description: 国内领先的物联网方案提供商
+author: 鼎甲微联
 language: zh-Hans
 timezone:
 avatar: http://ogl5vjc1c.bkt.clouddn.com/image/logo/master_studio.png
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://masterstudio.github.io
+url: https://djlinkiot.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -107,11 +107,11 @@ feed:
 
 #Social links
 social:
-  github: https://github.com/MasterStudio
+  github: https://github.com/DjLinkIOT
 
 
 # duoshuo
-duoshuo_shortname: masterstudio
+duoshuo_shortname: djlinkiot
 duoshuo_hotartical: true
 duoshuo_share: true
 
@@ -119,6 +119,6 @@ duoshuo_share: true
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/MasterStudio/MasterStudio.github.io
+  repo: https://github.com/DjLinkIOT/DjLinkIOT.github.io
   branch: master
 
