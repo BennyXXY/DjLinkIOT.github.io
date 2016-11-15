@@ -9,7 +9,8 @@ description: 国内领先的物联网方案提供商
 author: 鼎甲微联
 language: zh-Hans
 timezone:
-avatar: http://ogl5vjc1c.bkt.clouddn.com/image/logo/master_studio.png
+avatar: http://ogl5vjc1c.bkt.clouddn.com/image/logo/djlink.png
+
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -111,7 +112,7 @@ social:
 
 
 # duoshuo
-duoshuo_shortname: djlinkiot
+duoshuo_shortname: djlinkblog
 duoshuo_hotartical: true
 duoshuo_share: true
 
