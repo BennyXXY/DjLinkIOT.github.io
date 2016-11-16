@@ -1,39 +1,24 @@
 language: node_js
-
 sudo: false
-
 node_js:
 - 6.9.1
-
 branches:
   only:
-  - source    # 只监测 source 分支上的 commit
-
-#git:
-#  submodules: false
-
+  - source
 before_install:
-#- openssl aes-256-cbc -K $encrypted_a4dcfa5f2d9a_key -iv $encrypted_a4dcfa5f2d9a_iv
-#   -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
-#- chmod 600 ~/.ssh/id_rsa
-#- eval $(ssh-agent)
-#- ssh-add ~/.ssh/id_rsa
-#- cp .travis/ssh_config ~/.ssh/config
-
-before_install:
-- npm install -g hexo-cli     # 安装 hexo
-
+- npm install -g hexo-cli
 install:
-- npm install     # 安装额外的插件
-
+- npm install
 script:
-- git submodule init  # 用于更新主题
+- git submodule init
 - git submodule update
 - hexo clean
 - hexo g
-
 after_success:
 - git config --global user.name 'wangyf'
 - git config --global user.email 'zgtjwyftc@gmail.com'
 - sed -i'' "/^ *repo/s~github\.com~${GH_TOKEN}@github.com~" _config.yml
 - hexo d
+env:
+  global:
+    secure: cm92EtIsi4ZfBofo+r9vrREu8aN0ECFM5JcP5t4Z0bxKZd6sVThtdyQzgV2o9VWWzGpnxEE/oIugt2tN6XL6mekhakQFXnxWhThtFH9G0aCt9y5WnuqvLz+RgsBgRYfmqms25CIZM4QQByfKwVt9gP7ylyyAn28exmRmjm5JbZEtdIxuNunBDAj64soDC/sbBHBkU1TGhmGHlcarpta+dPqpR6cxT+rDJIs/1U4AQGf/Y2JCdn6ztuhF11JurANZv156klgYzWQUFrPFM3QDFZGHZ+2H4SCAfNFNZxWWZFCqKJ2bmD6zS2W3RrHFbH8Z+mqD4zKgY6KkXbrtxvQpx2/2/XBdNxEgJS65c6sa2XiG70A9uCnd1zw3qnSdO29Ez/xpFgTc3BLcKfS5W8PXLPXPhMQURAXJgK1PpvZ9JGqCtT7j12VhqAJsFo41YCI5TEnrgUPDNl6xwvJl+5DZ2+v9ruOmSTY1ZWAXclntWuX9MgPduNjLe4IheRBOiV6R9WTD96tLS/6YviFi2xvzmqcPiUc9rmXIcRDjrC4MWx2cRaIbL9GGDk2xxoon1S48/PKg9W27BKgMSk0BuIiNqMHOEVlepgZEsIXO4MyfpHQjuVQgYdnoozOrHjmch1za/9GNLFhvmbrP6vCAFx5eLEWCbog9wECW+N550bsouio=
