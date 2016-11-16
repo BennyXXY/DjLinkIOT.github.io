@@ -1,0 +1,39 @@
+language: node_js
+
+sudo: false
+
+node_js:
+- 6.9.1
+
+branches:
+  only:
+  - source    # 只监测 source 分支上的 commit
+
+#git:
+#  submodules: false
+
+before_install:
+#- openssl aes-256-cbc -K $encrypted_a4dcfa5f2d9a_key -iv $encrypted_a4dcfa5f2d9a_iv
+#   -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+#- chmod 600 ~/.ssh/id_rsa
+#- eval $(ssh-agent)
+#- ssh-add ~/.ssh/id_rsa
+#- cp .travis/ssh_config ~/.ssh/config
+
+before_install:
+- npm install -g hexo-cli     # 安装 hexo
+
+install:
+- npm install     # 安装额外的插件
+
+script:
+- git submodule init  # 用于更新主题
+- git submodule update
+- hexo clean
+- hexo g
+
+after_success:
+- git config --global user.name 'wangyf'
+- git config --global user.email 'zgtjwyftc@gmail.com'
+- sed -i'' "/^ *repo/s~github\.com~${GH_TOKEN}@github.com~" _config.yml
+- hexo d
