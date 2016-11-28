@@ -12,7 +12,6 @@ tags:
 - Gitlab CI Runner
 - CI
 ---
-
 # Linux 系统
 
 ## 基本配置
@@ -24,6 +23,8 @@ tags:
 - 推荐版本: 14.04LTS
 - 查看Ubuntu版本号
 > sudo lsb_release -a
+
+<!-- more -->
 
 ### 2. 内核版本
 
