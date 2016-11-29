@@ -1,8 +1,13 @@
 ---
 title: Hexo 自动部署到 Github
 date: 2016-11-16 15:50:27
-categories: [Workflow]
-tags: [Hexo, Travis CI]
+authors: 
+- EvanWang
+categories: 
+- Workflow
+tags: 
+- Hexo
+- Travis CI
 ---
 
 # Hexo 通过 Travis.ci 自动部署到 Github
