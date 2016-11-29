@@ -5,6 +5,7 @@ authors:
 - EvanWang
 categories: 
 - Workflow
+- Hexo
 tags: 
 - Hexo
 - Travis CI

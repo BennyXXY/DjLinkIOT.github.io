@@ -5,7 +5,7 @@ authors:
 - EvanWang
 categories: 
 - Workflow
-- Gitlab CI
+- Gitlab
 tags: 
 - Gitlab
 - Gitlab CI

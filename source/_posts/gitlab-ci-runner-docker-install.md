@@ -4,12 +4,12 @@ date: 2016-11-26 19:37:47
 authors: 
 - EvanWang
 categories:
+- Workflow
 - Gitlab
-- Docker
 tags:
 - Gitlab
-- GitlabCI
+- Gitlab CI
 - CI
-- GitlabCI Runner
+- Gitlab CI Runner
 - Docker
 ---
