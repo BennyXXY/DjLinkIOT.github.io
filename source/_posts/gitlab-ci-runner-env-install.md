@@ -1,7 +1,7 @@
 ---
 title: Gitlab CI Runner 打包机环境搭建
 date: 2016-11-28 11:08:02
-author:
+authors:
 - EvanWang
 categories: 
 - Workflow
@@ -12,7 +12,7 @@ tags:
 - Gitlab CI Runner
 - CI
 ---
-# Gitlab CI Runner 打包机环境搭建（Ubuntu）
+# Ubuntu系统环境搭建
 
 ## 基本配置
 

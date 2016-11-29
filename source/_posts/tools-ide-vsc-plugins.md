@@ -27,6 +27,8 @@ Visual Studio Code（简称VSCode）是继 Sublime 之后最好用的轻量级�
 
     各种萌妹背景，你懂的~
 
+<!-- more -->
+
 ## 美化
 
 - [vscode-icons | Roberto Huertas | 632k](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
