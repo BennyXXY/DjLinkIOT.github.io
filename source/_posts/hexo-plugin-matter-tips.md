@@ -17,6 +17,10 @@ tags:
 
 <!-- more -->
 
+## 图片插件
+
+- [Hexo七牛同步插件](https://github.com/gyk001/hexo-qiniu-sync)
+
 # Hexo注意事项
 
 

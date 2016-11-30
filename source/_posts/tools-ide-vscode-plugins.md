@@ -17,6 +17,8 @@ tags:
 
 Visual Studio Code（简称VSCode）是继 Sublime 之后最好用的轻量级跨平台编辑器IDE。其中的核心竞争力就是大量好用的插件。下面整理一下我最近收集的插件，以供参考。
 
+<!-- more -->
+
 # 主题样式
 
 ## 背景
@@ -26,8 +28,6 @@ Visual Studio Code（简称VSCode）是继 Sublime 之后最好用的轻量级�
     —— A simple tool to make your vscode's background look better!
 
     各种萌妹背景，你懂的~
-
-<!-- more -->
 
 ## 美化
 
