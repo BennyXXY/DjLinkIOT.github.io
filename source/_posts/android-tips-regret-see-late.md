@@ -1,5 +1,5 @@
 ---
-title: android-tips-regret-see-late
+title: Android 相见恨晚的小技巧
 date: 2016-11-17 22:09:32
 authors: 
 - EvanWang
@@ -9,3 +9,6 @@ tags:
 - Android
 - Android Tips
 ---
+
+
+<!-- more -->

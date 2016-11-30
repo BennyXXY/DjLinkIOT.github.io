@@ -4,8 +4,8 @@ date: 2016-11-26 19:43:30
 authors: 
 - EvanWang
 categories: 
-- Workflow
 - IDE
+- VSCode
 tags: 
 - IDE
 - VisualStudioCode

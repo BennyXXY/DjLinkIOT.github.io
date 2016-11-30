@@ -1,5 +1,5 @@
 ---
-title: Hexo 自动部署到 Github
+title: Hexo 通过 Travis CI 自动编译部署到 Github
 date: 2016-11-16 15:50:27
 authors: 
 - EvanWang
@@ -11,13 +11,13 @@ tags:
 - Travis CI
 ---
 
-# Hexo 通过 Travis.ci 自动部署到 Github
-
 使用 Hexo 写博客是十分惬意的事。唯一有点不爽的，就是每次修改后都要重新生成并部署到 Github 上，这也是所有静态博客生成工具的通病。那么本文我们就利用 Travis CI 来完成自动部署，解决心中最后一处搔痒。
 
 本文假设你知道如何使用 Hexo 来生成和部署你的网站，并知道如何使用 git 命令和 Github 。其实不明白也没什么，只是明白了更容易理解文章里说了什么。
 
-## 什么是 Travis CI
+# Travis CI
+
+# 什么是 Travis CI
 
 Continuous Integration(CI) 是持续集成的意思。
 
@@ -178,7 +178,7 @@ after_success:
 
 最后就是好好写博客，提交就可以了。
 
-## 参考资料
+# 参考资料
 
 - [Hexo 搭建 Wiki](http://www.jianshu.com/p/e7413116e9d4)
 - [Deploying Hexo to Github](https://sazzer.github.io/blog/2015/05/04/Deploying-Hexo-to-Github-Pages-with-Travis/)

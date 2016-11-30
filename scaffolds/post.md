@@ -1,10 +1,12 @@
 ---
 title: {{ title }}
 date: {{ date }}
-author:
-- 
+authors:
+- null
 categories: 
-- 
+- null
 tags:
-- 
+- null
 ---
+
+<!-- more -->
