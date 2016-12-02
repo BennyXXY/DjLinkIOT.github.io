@@ -44,7 +44,7 @@ date: 2016-11-16 17:03:02
 
 # 文档管理
 
-## 1.1 技术博客
+## 1.1 技术博客 Hexo
 
 - {% post_link hexo-blog-contribution-guide %}
 
@@ -54,6 +54,10 @@ date: 2016-11-16 17:03:02
 
 - [Gitbook征服指南](https://github.com/Master-Wang/MasterGitbook)
 
+## 1.3 文档框架
+
+- [grav](https://github.com/getgrav/grav)
+
 # 工具
 
 ## 1. IDE
@@ -62,7 +66,6 @@ date: 2016-11-16 17:03:02
 
 - {% post_link tools-ide-vscode-use %}
 
-- {% post_link tools-ide-vscode-use %}
 
 ### 1.2 Sublime
 
