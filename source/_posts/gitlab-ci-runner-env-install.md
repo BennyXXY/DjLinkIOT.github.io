@@ -1,5 +1,5 @@
 ---
-title: Gitlab CI Runner 打包机环境搭建
+title: Gitlab CI Runner 打包机环境搭建 (Ubuntu + Windows)
 date: 2016-11-28 11:08:02
 authors:
 - EvanWang
@@ -318,4 +318,7 @@ INFO[0037] Runner registered successfully. Feel free to start it, but if it's ru
 -----------
 
 ## Go 环境搭建
+
+# Windows系统环境搭建
+
 

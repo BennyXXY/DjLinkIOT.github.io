@@ -13,8 +13,7 @@ tags:
 ---
 
 ## Android开发人员不得不收集的代码([持续更新中][update_log.md])
-**[README of English][readme.md]**
-***
+
 为方便查找，已进行大致归类，其目录如下所示：
 > - **Activity相关→[ActivityUtils.java][activity.java]→[Demo][activity.demo]**
 
