@@ -14,18 +14,6 @@ tags:
 - Docker
 ---
 
-# Windows 环境下安装 Docker
-
-## 在Windows 10 64位专业版的安装 （建议）
-
-<!-- more -->
-
-## 非Windows 10 64位专业版（无法使用原生Docker）的安装
-
-# Docker配置
-
-
-
 # Gitlab CI Runner 安装
 
 ## 传统.exe方式
@@ -44,3 +32,8 @@ tags:
 
 ## Python
 
+# 参考文档
+
+## 官方文档
+
+- []
