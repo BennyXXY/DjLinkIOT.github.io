@@ -204,7 +204,7 @@ tags:
 
     // 实例
     {% truncate(post.description, {length:n}) %}
-    
+    ```
 - 在 swig 中，胡子或胡子百分号内不能再使用胡子或胡子百分号
 
 - DIY 主题，写法参考 [官网教程](https://github.com/yangfch3/Dandelion)
