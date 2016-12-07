@@ -123,21 +123,28 @@ tags:
 
 ## 成员变量
 
-- `非静态成员变量` 都以 `字母m` 开头的驼峰式（ `lowerCamelCase` ）风格命名
-- `静态成员变量` 都以 `字母s` 开头的驼峰式（ `lowerCamelCase` ）风格命名
-- 引用 `非静态成员变量` 时，使用 `this` 引用。引用 `静态成员变量` 时，使用 `类名` 引用
+- **非静态非public成员变量** 都以 `字母m` 开头的驼峰式（ `lowerCamelCase` ）风格命名
+- **静态成员变量** 都以 `字母s` 开头的驼峰式（ `lowerCamelCase` ）风格命名
+- **其他变量** 都以 小写字母 开头的驼峰式（ `lowerCamelCase` ）风格命名
+- 引用 **非静态成员变量** 时，使用 `this` 引用。引用 **静态成员变量** 时，使用 `类名` 引用
 - 示例：
   ```java
-  public class Person {
-    private String mName;
-    private static List sProperties;
-
-    public void setName (String name) {
-      this.mName = name;
+  public class MyClass {
+    
+    public static final int SOME_CONSTANT = 42; //public constant
+    public static int sPublicField;  //public static
+    public int publicField;   //public
+    private static MyClass sSingleton;  //private static
+    int mPackagePrivateField;      //package
+    protected int mProtectedField; //protect
+    private int mPrivateField;     //protect
+   
+    public void setPrivateField (int privateField) {
+      this.mPrivateField = privateField;
     }
 
-    public void setProperties (List properties) {
-        Person.sProperties = properties;
+    public void setPublicField (int publicField) {
+        MyClass.sPublicField = publicField;
     }
   }
   ```
@@ -168,7 +175,7 @@ Applet 类型，命名以 Applet 结尾 —— PictureShowApplet
 
 - 函数名/变量名缩写
 
-  如果函数名超过15个字母，可采用以去掉元音字母的方法或者以行业内约定俗成的缩写方式缩写函数名
+  如果函数名超过 `15个字母`，可采用以去掉元音字母的方法或者以行业内约定俗成的缩写方式缩写函数名
   > 示例：getCustomerInformation() 改为 getCustomerInfo()
 
 - 准确确定成员函数的访问限定符（public、protect、private）
@@ -209,10 +216,8 @@ Prose form                Correct               Incorrect
 "inner stopwatch"         innerStopwatch        innerStopWatch
 "supports IPv6 on iOS?"   supportsIpv6OnIos     supportsIPv6OnIOS
 "YouTube importer"        YouTubeImporter
-                          YoutubeImporter*
+                          YoutubeImporter* (不推荐)
 ```
-
-加星号处表示可以，但不推荐。
 
 > Note：在英语中，某些带有连字符的单词形式不唯一。例如：`”nonempty”` 和 `”non-empty”` 都是正确的，因此方法名 `checkNonempty` 和`checkNonEmpty` 也都是正确的。
 
@@ -625,3 +630,4 @@ Prose form                Correct               Incorrect
 
 - [Google Java编程风格指南](http://www.hawstein.com/posts/google-java-style.html)
 - [华为java编程规范](http://wenku.baidu.com/link?url=VdW3Q-oxZZGwr_CQzyZnjdNyNlez5IbAAIPpu8448rM8_FyDWKECTjlKrj5cuX3DANoCRQC2Ge8opkHXafBIy4v8fyll4GQDKLMbsGORwAq)
+- [Android-Open-Source-Project Code Style](https://source.android.com/source/code-style.html)
