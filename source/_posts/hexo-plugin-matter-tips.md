@@ -1,5 +1,5 @@
 ---
-title: Hexo 插件、注意事项 和主题相关问题
+title: Hexo 插件、小技巧 和 主题相关
 date: 2016-11-30 10:03:46
 authors:
 - EvanWang
