@@ -13,18 +13,17 @@ tags:
 
 # Git分支管理与提交规范
 
-多人协作开发情况下，每个人都应该了解并理解**Git分支模型**
+多人协作开发情况下，每个人都应该了解并理解 **Git分支模型**
 
 这里意见几篇质量极高的文章以供参阅，因此不再赘述。
 
 [git版本控制开发流程小结笔记（一）](http://my.oschina.net/nyankosama/blog/270546?fromerr=0Byh13go)
-
 [git版本控制开发流程小结笔记（二）](http://my.oschina.net/nyankosama/blog/270581)
-
 [一个成功的 Git 分支模型](http://www.oschina.net/translate/a-successful-git-branching-model)
 
-
 因为Git的操作指令非常灵活，所以这里只给出提交备注的建议：
+
+<!-- more -->
 
 ## 1. 提交备注
 
@@ -96,7 +95,6 @@ tags:
   git remote add -t dev -f origin git@git.thecampus.cc:onecampus/liveneeq-android.git
   git checkout -b dev origin/dev
   ```
-<!-- more -->
 
 - 每个人建立带下划线的自己全名的分支，例如 _yangfan
 

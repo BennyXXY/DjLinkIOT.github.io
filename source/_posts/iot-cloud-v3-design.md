@@ -1,6 +1,6 @@
 ---
-title: 物联云端新架构2.0
-date: 2016-12-06 01:12:40
+title: 物联云端 架构3.0 规划
+date: 2016-12-13 16:37:05
 authors:
   - EvanWang
 categories:
@@ -9,6 +9,7 @@ categories:
 tags:
   - IOT
   - IOT Cloud
+  - IOT Cloud 3.0
 ---
 
 <!-- more -->

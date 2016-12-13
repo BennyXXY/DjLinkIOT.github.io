@@ -1,6 +1,6 @@
 ---
-title: 物联App新架构3.0
-date: 2016-12-06 01:12:25
+title: 物联App 架构3.0 规划
+date: 2016-12-13 16:32:01
 authors:
   - EvanWang
 categories:
@@ -9,6 +9,7 @@ categories:
 tags:
   - IOT
   - IOT APP
+  - IOT APP 3.0
 ---
 
 <!-- more -->
