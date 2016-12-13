@@ -395,7 +395,7 @@ Prose form                Correct               Incorrect
 
 - 注释应与其描述的代码相近，对代码的注释应放在其上方或右方（对单条语句的注释）相邻位置，不可放在下面，如放于上方则需与其上面的代码用空行隔开。
 - 注释与所描述内容进行同样的缩排
-> 说明：可使程序排版整齐，并方便注释的阅读与理解
+  > 说明：可使程序排版整齐，并方便注释的阅读与理解
   ```java
   public void example() {
   //注释
@@ -436,8 +436,38 @@ Prose form                Correct               Incorrect
 - 对 `变量的定义` 和 `分支语句`（条件分支、循环语句等）必须编写注释
   > 说明：这些语句往往是程序实现某一特定功能的关键，对于维护人员来说，良好的注释帮助更好的理解程序，有时甚至优于看设计文档
 
-- 对于 `switch` 语句下的 `case` 语句，如果因为特殊情况需要处理完一个 `case` 后进入下一个 `case` 处理，必须在该 `case` 语句处理完，下一个 `case` 语句前加上明确的注释。
+- 若覆盖基类的方法，则可以不写方法注释，但必须用@Override标出，例如：
+  ```java
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {}
+  ```
 
+- `switch … case` 的每个条件，如果没有用明确语义的 `enum` 或者 `string`，需要添加简短说明，例如：
+  ```java
+  switch (type) {
+  case 1:// Android apps
+        break;
+  case 2:// Android games
+        break;
+  case 3:// iOS apps
+        break;
+  default:// Not a valid package
+        break;
+  }
+  ```
+
+- 对于 `switch` 语句下的 `case` 语句，如果因为特殊情况需要处理完一个 `case` 后进入下一个 `case` 处理，必须在该 `case` 语句处理完，下一个 `case` 语句前加上明确的注释。
+  ```java
+  switch (type) {
+  case 1:   // Android apps
+      // 再进入下一个case处理
+  case 2:   // iOS apps
+        break;
+  default:
+        break;
+  }
+  ```
+  
 - 边写代码边注释，修改代码同时修改相应的注释，以保证注释与代码的一致性。不再有用的注释要删除。
 
 - 注释的内容要清楚、明了，含义准确，防止注释二义性
@@ -445,6 +475,24 @@ Prose form                Correct               Incorrect
 
 - 避免在注释中使用缩写，特别是不常用的缩写
   > 在使用缩写时或之前，应对缩写进行必要的说明
+
+- 对于未完成的方法，使用TODO加以标记，例如：
+  ```java
+  void write(byte[] buf, File file) {
+    // TODO: Write buf to file
+  }
+  ```
+
+- 若代码存在严重问题或仅用于调试，使用 `FIXME` 加以标记（注：存在 `FIXME` 标记的代码不能作为正式版发布）
+  ```java
+  boolean login(String name, String pwd) {
+        //FIXME: Remove this line before publishing
+        System.out.println("name=" + name + ", password=" + pwd);
+        if (users.containsKey(name) && users.get(name).equals(pwd))
+        return true;
+        return false;
+    }
+  ```
 
 ## 建议
 
@@ -510,6 +558,19 @@ Prose form                Correct               Incorrect
 - 参数合法性检查 —— 规定对接口方法参数的合法性检查应由方法的调用者负责还是由接口方法本身负责，缺省是 `由方法调用者负责`。
   > 对于模块间接口方法的参数的合法性检查这一问题，往往有两个极端现象，即：要么是调用者和被调用者对参数均不作合法性检查，结果就遗漏了合法性检查这一必要的处理过程，造成问题隐患。要么就是调用者和被调用者均对参数进行合法性检查，这种情况虽然不会造成问题，但产生了冗余代码，降低了效率。
 
+- 类成员排序规范
+
+  关于这个并没有硬性要求，不过好的排序方式，能够提高可读性和易学性。这里给出一些排序建议：
+  
+> 1. 常量
+> 1. 字段
+> 1. 构造函数
+> 1. 被重写的函数（不区分修饰符类型）
+> 1. 被 private 修饰的函数
+> 1. 被 public 修饰的函数
+> 1. 被定义的内部类或者接口
+
+
 
 - 所有的数据类必须重载 `toString()` 方法，返回该类有意义的内容。方便调试与日志打印。
   > 父类如果实现了比较合理的 `toString()`，子类可以继承不必再重写。
@@ -522,6 +583,30 @@ Prose form                Correct               Incorrect
     }
   }
   ```
+
+- 注解使用规范
+
+  - `@Override`： 子类实现或者重写父类方法时，必须使用`@Override`对函数进行标注。
+  - `@SuppressWarnings`： 注解`@SuppressWarnings`应该用在消除那些明确不可能发生的警告上，示例如下：
+
+  ```java
+  //明确的类型安全（type-safe）转换
+  @SuppressWarnings("unchecked")
+  public static <R> FeedbackUseCase<R> createdUseCase() {
+      return (FeedbackUseCase<R>) new FeedbackUseCase();
+  }
+
+  //请先确保能够非常正确地使用Handler
+  @SuppressWarnings("handlerLeak")
+  private Handler mHandler = new Handler() {
+      @Override
+      public void handleMessage(Message msg) {
+          super.handleMessage(msg);
+      }
+  };
+  ```
+  更多关于注解的使用技巧与规范请参考[这里](http://source.android.com/source/code-style.html#use-standard-java-annotations)。
+
 
 - 数组声明的时候使用 `int[] index`，而不要使用 `int index[]`
   > 使用 `int index[]` 格式使程序的可读性较差
@@ -631,3 +716,4 @@ Prose form                Correct               Incorrect
 - [Google Java编程风格指南](http://www.hawstein.com/posts/google-java-style.html)
 - [华为java编程规范](http://wenku.baidu.com/link?url=VdW3Q-oxZZGwr_CQzyZnjdNyNlez5IbAAIPpu8448rM8_FyDWKECTjlKrj5cuX3DANoCRQC2Ge8opkHXafBIy4v8fyll4GQDKLMbsGORwAq)
 - [Android-Open-Source-Project Code Style](https://source.android.com/source/code-style.html)
+   （[中文版](http://blog.sina.com.cn/s/blog_48d491300100zwzg.html#use-todo-comments)）
