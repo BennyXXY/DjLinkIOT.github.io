@@ -121,6 +121,30 @@ tags:
 | Cur  | 一组变量中的当前变量 |
 
 
+### 字符串常量
+
+Android SDK中诸如 `SharedPreferences`，`Bundle` 和 `Intent` 等，都采用**key-value** 的方式进行赋值，当使用这些组件的时候，**key** 必须被 `static final` 所修饰，并且命名应该符合以下规范：
+
+| Element            | Field Name Prefix   |
+| -----------------  | -----------------   |
+| SharedPreferences  | `PREF_`             |
+| Bundle             | `BUNDLE_`           |
+| Fragment Arguments | `ARGUMENT_`         |
+| Intent Extra       | `EXTRA_`            |
+| Intent Action      | `ACTION_`           |
+
+需要注意的是，当调用Fragment的 `getArguments()` 方法时，返回值同样是一个 `Bundle`，因为这也是一个常用函数，因此我们需要定义一个不同的前缀，示例如下：
+
+```java
+static final String PREF_EMAIL = "PREF_EMAIL";
+static final String BUNDLE_AGE = "BUNDLE_AGE";
+static final String ARGUMENT_USER_ID = "ARGUMENT_USER_ID";
+
+static final String EXTRA_SURNAME = "com.myapp.extras.EXTRA_SURNAME";
+static final String ACTION_OPEN_USER = "com.myapp.action.ACTION_OPEN_USER";
+```
+
+
 ## JNI
 
 待续
@@ -548,21 +572,28 @@ tags:
 
 ## 编码相关
 
-- 使用 `AccountManager` 来建议登录名与Email地址等
+### 常规
 
-### Log
+#### 方法函数中的参数排序规范
 
-- Log 输出规范
+在Android日常开发中，很多情况下都需要使用 `Context`，所以经常被作为参数传入方法中，这里给出的建议是，如果函数签名中存在 `Context`，则作为第一个参数，如果存在 `Callback` 则作为最后一个参数，示例如下：
 
-  使用 Log 类打印一些重要的信息对开发者而言是很重要的事情，切记不要使用 Toast 来做信息打印。
+```java
+public void loadUserAsync(Context context, int userId, UserCallback callback);
+```
 
-  `VERBOSE` 和 `DEBUG` 类型的 Log 不应该出现在 `Release` 版本中，`INFORMATION`、`WARNING` 和 `ERROR` 类型的 Log 可以留下来，因为这些信息的输出能够帮助我们快速地定位问题所在，当然前提是，需要隐藏重要的信息输出，如：用户手机号，邮箱等。
+### Activity Fragment 相关
 
-  只在 Debug 环境中输出日志的小技巧：
+#### BaseActivity BaseFragment
 
-  > if (BuildConfig.DEBUG) Log.d(TAG, "The value of x is " + x)
+- 每个 `Activity`，`Fragment` 都要对应继承 `BaseActivity`，`BaseFragment`（放在目录 `com.xx.yy.ui.base` 下）
+- `BaseActivity` 统一继承 `support-v7` 中的 `AppCompatActivity`。
+- `BaseFragment` 统一继承 `support-v4` 中的 `Fragment`
+- 如果项目中引用 `RxJava`，建议继承 [RxLifecycle](https://github.com/trello/RxLifecycle) 中的 `RxAppCompatActivity` 和 `RxFragment`
+- Activity `Theme` 统一继承 `Theme.AppCompat[.Light].NoActionBar`
 
-### 生命周期排序规范
+
+#### 生命周期排序
 
 Activity或者Fragment，重写生命周期函数时，应该按照组件的生命周期进行排序，如：
 
@@ -583,38 +614,7 @@ public class MainActivity extends Activity {
 }
 ```
 
-### 方法函数中的参数排序规范
-
-在Android日常开发中，很多情况下都需要使用 `Context`，所以经常被作为参数传入方法中，这里给出的建议是，如果函数签名中存在 `Context`，则作为第一个参数，如果存在 `Callback` 则作为最后一个参数，示例如下：
-
-```java
-public void loadUserAsync(Context context, int userId, UserCallback callback);
-```
-
-### 字符串常量的命名与赋值规范
-
-Android SDK中诸如 `SharedPreferences`，`Bundle` 和 `Intent` 等，都采用**key-value** 的方式进行赋值，当使用这些组件的时候，**key** 必须被 `static final` 所修饰，并且命名应该符合以下规范：
-
-| Element            | Field Name Prefix   |
-| -----------------  | -----------------   |
-| SharedPreferences  | `PREF_`             |
-| Bundle             | `BUNDLE_`           |
-| Fragment Arguments | `ARGUMENT_`         |
-| Intent Extra       | `EXTRA_`            |
-| Intent Action      | `ACTION_`           |
-
-需要注意的是，当调用Fragment的 `getArguments()` 方法时，返回值同样是一个 `Bundle`，因为这也是一个常用函数，因此我们需要定义一个不同的前缀，示例如下：
-
-```java
-static final String PREF_EMAIL = "PREF_EMAIL";
-static final String BUNDLE_AGE = "BUNDLE_AGE";
-static final String ARGUMENT_USER_ID = "ARGUMENT_USER_ID";
-
-static final String EXTRA_SURNAME = "com.myapp.extras.EXTRA_SURNAME";
-static final String ACTION_OPEN_USER = "com.myapp.action.ACTION_OPEN_USER";
-```
-
-### Activity 和 Fragment打开方式
+#### Activity 和 Fragment 打开方式
 
 当通过 `Intent` 或者 `Bundle` 向 `Activity` 与 `Fragment` 传值时，应该遵循上面提到的 `key-value` 规范，公开一个被 `public static` 修饰的方法，方法的参数应该包含所有打开这个 `Activity` 或者 `Fragment` 的信息，示例如下：
 
@@ -646,12 +646,28 @@ public static UserFragment newInstance(User user) {
 1. 如 `EXTRA_USER`，`ARGUMENT_USER` 等常量 `key`，应该放在本类中被`private` 所修饰，不应该暴露给其它外部类。
 
 
+### Log
+
+#### Log 输出规范
+
+  使用 Log 类打印一些重要的信息对开发者而言是很重要的事情，切记不要使用 Toast 来做信息打印。
+
+  `VERBOSE` 和 `DEBUG` 类型的 Log 不应该出现在 `Release` 版本中，`INFORMATION`、`WARNING` 和 `ERROR` 类型的 Log 可以留下来，因为这些信息的输出能够帮助我们快速地定位问题所在，当然前提是，需要隐藏重要的信息输出，如：用户手机号，邮箱等。
+
+  只在 Debug 环境中输出日志的小技巧：
+
+  > if (BuildConfig.DEBUG) Log.d(TAG, "The value of x is " + x)
+
+
 ### 数据库
 
 - 除非确实有必要，否则不要盲目的引入数据库支持。这一点笔者也是赞同的，很多时候简单的缓存可以用 `SharedReference` 就可以了。不过反过来，如果你真的有一定的需要持久化的数据，不要犹豫，立马引入数据库的支持
 - 如果引入了DB支持，那考虑使用 `ORM框架` 的支持，避免重复造轮子
 - 关于 `Realm` ，这是一个很炫的东西，但是笔者自己老实说在Android和iOS平台引入之后，发现还是会存在一些问题Abderrazak Laanaya对Realm是持积极态度而Stepan Goncharov是保守态度。笔者自己的感觉是Realm确实很酷，但是一定要做好其引发未知Crash的心理准备
 
+### 其他
+
+- 使用 `AccountManager` 来建议登录名与Email地址等
 
 ### 权限相关
 
